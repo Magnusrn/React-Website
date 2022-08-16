@@ -1,7 +1,12 @@
 import React from 'react';
 import { useCountdown } from '../../hooks/useCountdown';
+import Sound from "C:\\Users\\Mag\\Desktop\\react-frontend\\src\\components\\timer\\alarm.mp3";
 
 const ExpiredNotice = () => {
+    let alarmed;
+    const alarm = new Audio(Sound);
+    //alarm.play();
+    // alert("Time up!" );
     return (
         <div className="expired-notice">
             <span>Times up!</span>
@@ -37,3 +42,5 @@ const CountdownTimer = ({ targetDate }) => {
 };
 
 export default CountdownTimer;
+//add alarm(optional), change window title to current timer remaining
+//add buttons to quick set time
