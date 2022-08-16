@@ -3,10 +3,9 @@ import { useCountdown } from '../../hooks/useCountdown';
 import Sound from "C:\\Users\\Mag\\Desktop\\react-frontend\\src\\components\\timer\\alarm.mp3";
 
 const ExpiredNotice = () => {
-    let alarmed;
     const alarm = new Audio(Sound);
-    //alarm.play();
-    // alert("Time up!" );
+    alarm.play();
+     alert("Time up!" );
     return (
         <div className="expired-notice">
             <span>Times up!</span>
