@@ -25,8 +25,8 @@ const ShowCounter = ({hours, minutes, seconds }) => {
     );
 };
 
-const CountdownTimer = ({ targetDate }) => {
-    const [hours, minutes, seconds] = useCountdown(targetDate);
+const CountdownTimer = ({ targetTime }) => {
+    const [hours, minutes, seconds] = useCountdown(targetTime);
 
     if ( hours + minutes + seconds <= 0) {
         return <ExpiredNotice />;
