@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "@types/react";
+import React, {useEffect, useState} from 'react';
 
 const Stopwatch = () => {
     const [time, setTime] = useState(0);
@@ -10,15 +10,16 @@ const Stopwatch = () => {
             interval = setInterval(() => {
                 setTime((prevTime) => prevTime + 10);
             }, 10);
-        } else if (!running) {
-            clearInterval(interval);
+        // } else if (!running) {
+        //     clearInterval(interval);
         }
         return () => clearInterval(interval);
     }, [running]);
 
     let startStopButton = <button onClick={() => setRunning(true)}>Start</button>
 
-    if (running) {
+    if (running)
+    {
         startStopButton = <button onClick={() => setRunning(false)}>Stop</button>
     }
 

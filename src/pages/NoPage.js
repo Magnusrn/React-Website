@@ -1,5 +1,5 @@
 function NoPage() {
-    return "Nopage"
+    return "404"
 }
 
 export default NoPage;

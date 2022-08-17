@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import NavigationBar from "./components/navbar/NavigationBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./components/footer/Footer";
+import Stopwatch from "./pages/Stopwatch";
 
 export default function App() {
     return (
@@ -19,6 +20,7 @@ export default function App() {
                     <Route key={path} path={path} element={<Timer/>}>
                         <Route path=":args" element={<Timer/>}/>
                     </Route>))}
+                <Route path="stopwatch" element={<Stopwatch/>}/>
                 <Route path="contact" element={<Contact/>}/>
                 <Route path="*" element={<NoPage/>}/>
             </Routes>
