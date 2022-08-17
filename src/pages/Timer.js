@@ -17,7 +17,8 @@ function Timer() {
             <br/>
             <br/>
 
-            Simple countdown timer that can quickly be started by entering magnus.one/t/(mins)m(seconds)
+            Simple countdown timer that can quickly be started by entering magnus.one/t/(mins)m(seconds), Unfortunately requires manually starting otherwise the alarm is blocked by
+            browsers
         </div>
     );
 }

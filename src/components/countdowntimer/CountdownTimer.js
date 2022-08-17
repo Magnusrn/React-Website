@@ -16,6 +16,7 @@ const ShowCounter = ({finalTimeInMillis}) => {
     let hours = Math.floor((finalTimeInMillis / (1000 * 60 * 60)) % 24);
 
     let timeRemaining = hours + "h " + minutes + "m " + seconds + "s "
+    document.title = timeRemaining
     return (
         <div className="show-counter">
             <div>
@@ -33,14 +34,14 @@ function parseUrlArgs(args) {
     // 30
     // 50s
     // 30-50
-    let arg_re = /(?:(?<minutes>\d+)[m-]((?<seconds>\d+)s?)?)?(?<minutes2>^\d+$)?(?:(?<seconds2>^\d+)s)?/
+    let arg_re = /(?:(?<minutes>\d+)[m\-:]((?<seconds>\d+)s?)?)?(?<minutes2>^\d+$)?(?:(?<seconds2>^\d+)s)?/
     let match = arg_re.exec(args)
     if (!match) {
         console.log(args)
         return null;
     }
-    let mins = [match.groups.minutes,match.groups.minutes2].find(entry => entry!=null)
-    let seconds = [match.groups.seconds,match.groups.seconds2].find(entry => entry!=null)
+    let mins = [match.groups.minutes, match.groups.minutes2].find(entry => entry != null)
+    let seconds = [match.groups.seconds, match.groups.seconds2].find(entry => entry != null)
     let finalTimeInMillis = 0;
     if (mins) {
         finalTimeInMillis += 60000 * mins
@@ -48,15 +49,23 @@ function parseUrlArgs(args) {
     if (seconds) {
         finalTimeInMillis += 1000 * seconds
     }
-    return finalTimeInMillis ;
+    return finalTimeInMillis;
 }
+
 
 const CountdownTimer = ({urlArgs}) => {
     let validUrlArgs = parseUrlArgs(urlArgs);
     const [timeRemaining, setTimeRemaining] = useState(validUrlArgs ? validUrlArgs : 0);
     //automatically run if args are entered into the url for speed
-    const [running, setRunning] = useState(!!validUrlArgs);
+    const [running, setRunning] = useState(false);
     const [alertState, setAlerted] = useState(false);
+
+
+    function resetStates () {
+        setTimeRemaining(0);
+        setRunning(false);
+        setAlerted(false);
+    }
 
     useEffect(() => {
         let interval;
@@ -70,11 +79,7 @@ const CountdownTimer = ({urlArgs}) => {
 
     let startStopButton = running ? <button onClick={() => setRunning(false)}>Stop</button> :
         <button onClick={() => setRunning(true)}>Start</button>
-    let resetTimerButton = <button onClick={() => {
-        setTimeRemaining(0);
-        setRunning(false);
-        setAlerted(false);
-    }}>Reset</button>
+    let resetTimerButton = <button onClick={() => resetStates() }>Reset</button>
 
     let incrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining + 3600000)}>+1 Hour</button>
     let incrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining + 60000)}>+1 Minute</button>
@@ -99,27 +104,31 @@ const CountdownTimer = ({urlArgs}) => {
         }
     }
 
-        return (
-            <div className="Timer">
-                <ShowCounter finalTimeInMillis={timeRemaining}/>
-                <div className="buttons">
+    if (timeRemaining < 0) resetStates()
 
-                    {incrementHoursButton}
-                    {incrementMinutesButton}
-                    {incrementSecondsButton}
-                    {startStopButton}
+    return (
+        <div className="Timer">
+            <ShowCounter finalTimeInMillis={timeRemaining}/>
+            <div className="buttons">
 
-                    <br/>
-                    {decrementHoursButton}
-                    {decrementMinutesButton}
-                    {decrementSecondsButton}
-                    {resetTimerButton}
+                {incrementHoursButton}
+                {incrementMinutesButton}
+                {incrementSecondsButton}
+                {startStopButton}
 
-                </div>
-            </div>);
+                <br/>
+                {decrementHoursButton}
+                {decrementMinutesButton}
+                {decrementSecondsButton}
+                {resetTimerButton}
+
+            </div>
+        </div>);
 }
 
 
 export default CountdownTimer;
-//add alarm(optional), change window title to current timer remaining
+// change window title to current timer remaining
 //add ability to type desired time
+//add BIG buttons to start and BIG numbers
+//perhaps add some sort of autostart if it's not started within x seconds, wouldn't be able to alert though
