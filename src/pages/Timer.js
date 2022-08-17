@@ -7,6 +7,17 @@ function Timer() {
         <div>
             <h1>Countdown Timer</h1>
             <CountdownTimer urlArgs={args} />
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+            Simple countdown timer that can quickly be started by entering magnus.one/t/(mins)m(seconds)
         </div>
     );
 }

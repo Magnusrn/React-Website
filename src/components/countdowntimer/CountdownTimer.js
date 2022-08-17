@@ -60,65 +60,64 @@ const CountdownTimer = ({urlArgs}) => {
 
     useEffect(() => {
         let interval;
-        if (running)
-        {
+        if (running) {
             interval = setInterval(() => {
-                setTimeRemaining((prevTime) => prevTime -1000);
+                setTimeRemaining((prevTime) => prevTime - 1000);
             }, 1000);
         }
         return () => clearInterval(interval);
     }, [running]);
 
-    let startStopButton = running ? <button onClick={() => setRunning(false)}>Stop</button> : <button onClick={() => setRunning(true)}>Start</button>
-    let resetTimerButton =  <button onClick={() => {
+    let startStopButton = running ? <button onClick={() => setRunning(false)}>Stop</button> :
+        <button onClick={() => setRunning(true)}>Start</button>
+    let resetTimerButton = <button onClick={() => {
         setTimeRemaining(0);
-        setRunning( false);
+        setRunning(false);
         setAlerted(false);
     }}>Reset</button>
 
-    let incrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining+3600000)}>+1 Hour</button>
-    let incrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining+60000)}>+1 Minute</button>
-    let incrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining+1000)}>+1 Second</button>
+    let incrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining + 3600000)}>+1 Hour</button>
+    let incrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining + 60000)}>+1 Minute</button>
+    let incrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining + 1000)}>+1 Second</button>
 
 
-    let decrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining-3600000)}>-1 Hour</button>
-    let decrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining-60000)}>-1 Minute</button>
-    let decrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining-1000)}>-1 Second</button>
+    let decrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining - 3600000)}>-1 Hour</button>
+    let decrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining - 60000)}>-1 Minute</button>
+    let decrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining - 1000)}>-1 Second</button>
 
-    if (running && timeRemaining <= 0)
-    {
-        if (!alertState)
-        {
+    if (running && timeRemaining <= 0) {
+        if (!alertState) {
             setAlerted(true);
             const alarm = new Audio(Sound);
+            alarm.load();
             alarm.play();
+            return (
+                <div>
+                    <ExpiredNotice/>
+                    {resetTimerButton}
+                </div>)
         }
-        return (
-            <div>
-                <ExpiredNotice/>
-                {resetTimerButton}
-            </div> )
     }
 
-    return (
-        <div className="Timer">
-            <ShowCounter finalTimeInMillis={timeRemaining}/>
-            <div className="buttons">
+        return (
+            <div className="Timer">
+                <ShowCounter finalTimeInMillis={timeRemaining}/>
+                <div className="buttons">
 
-                {incrementHoursButton}
-                {incrementMinutesButton}
-                {incrementSecondsButton}
-                {startStopButton}
+                    {incrementHoursButton}
+                    {incrementMinutesButton}
+                    {incrementSecondsButton}
+                    {startStopButton}
 
-                <br/>
-                {decrementHoursButton}
-                {decrementMinutesButton}
-                {decrementSecondsButton}
-                {resetTimerButton}
+                    <br/>
+                    {decrementHoursButton}
+                    {decrementMinutesButton}
+                    {decrementSecondsButton}
+                    {resetTimerButton}
 
-            </div>
-        </div>);
-};
+                </div>
+            </div>);
+}
 
 
 export default CountdownTimer;

@@ -12,14 +12,6 @@ const Footer = () => {
                         Magnus
                 </section >
                 <section className={styles.footer_info_center}>
-                    <section className="footer-info__email">
-                        shop.info@gmail.com
-                    </section>
-                    <section className="footer-info__terms">
-                        Terms and Conditions
-                        <br />
-                        Copyright
-                    </section>
 
                 </section>
                 <section className={styles.footer_info_right}>
