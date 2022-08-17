@@ -4,15 +4,14 @@ import Home from "./pages/Home";
 import Timer from "./pages/Timer";
 import NoPage from "./pages/NoPage";
 import Contact from "./pages/Contact";
-import Navigation from "./components/navbar/Navigation";
+import NavigationBar from "./components/navbar/NavigationBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Nav} from "react-bootstrap";
 import Footer from "./components/footer/Footer";
 
 export default function App() {
     return (
         <BrowserRouter>
-            <Navigation/>
+            <NavigationBar/>
             <Routes>
                 <Route index element={<Home/>}/>
                 {/*allow aliases to access the timer page for speed*/}
