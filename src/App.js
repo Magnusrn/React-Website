@@ -7,6 +7,7 @@ import Contact from "./pages/Contact";
 import Navigation from "./components/navbar/Navigation";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Nav} from "react-bootstrap";
+import Footer from "./components/footer/Footer";
 
 export default function App() {
     return (
@@ -22,6 +23,7 @@ export default function App() {
                 <Route path="contact" element={<Contact/>}/>
                 <Route path="*" element={<NoPage/>}/>
             </Routes>
+            <Footer/>
         </BrowserRouter>
     );
 }
