@@ -77,6 +77,7 @@ const CountdownTimer = ({urlArgs}) => {
         return () => clearInterval(interval);
     }, [running]);
 
+    //seems to be taking 1s longer than it always should, may need to decrement the time by 1 immediately on clicking the start button, though this isn't ideal as it's a logic issue
     let startStopButton = running ? <button onClick={() => setRunning(false)}>Stop</button> :
         <button onClick={() => setRunning(true)}>Start</button>
     let resetTimerButton = <button onClick={() => resetStates() }>Reset</button>
@@ -84,7 +85,6 @@ const CountdownTimer = ({urlArgs}) => {
     let incrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining + 3600000)}>+1 Hour</button>
     let incrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining + 60000)}>+1 Minute</button>
     let incrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining + 1000)}>+1 Second</button>
-
 
     let decrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining - 3600000)}>-1 Hour</button>
     let decrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining - 60000)}>-1 Minute</button>

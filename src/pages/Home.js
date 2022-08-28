@@ -1,8 +1,10 @@
 function Home() {
     console.log("accessed homepage")
-    return "HOME" +
-        "HOME" +
-        "HOME"
+    return (
+        <div>
+            <p>homepage</p>
+        </div>
+    )
 }
 
 export default Home;

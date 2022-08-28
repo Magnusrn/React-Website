@@ -11,10 +11,12 @@ import Stopwatch from "./pages/Stopwatch";
 
 export default function App() {
     return (
+        <div>
+        <style>{"body { background-color: grey; }"}</style>
         <BrowserRouter>
             <NavigationBar/>
             <Routes>
-                <Route index element={<Home/>}/>
+                <Route path="/" element={<Home/>}/>
                 {/*allow aliases to access the timer page for speed*/}
                 {["timer", "t"].map(path => (
                     <Route key={path} path={path} element={<Timer/>}>
@@ -26,5 +28,6 @@ export default function App() {
             </Routes>
             <Footer/>
         </BrowserRouter>
+        </div>
     );
 }
