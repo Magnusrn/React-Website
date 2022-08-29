@@ -7,7 +7,7 @@ const NavigationBar = () => {
   //dynamically adjust opacity of navbar on scroll
   let changeOpacity = () => {
     var element = document.getElementsByClassName(styles.navbarHolder)[1];
-    element.style.backgroundColor = `rgba(0, 255, 255, ${
+    element.style.backgroundColor = `rgba(80, 80, 80, ${
       window.scrollY / 100
     })`;
   };

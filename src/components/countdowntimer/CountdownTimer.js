@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Sound from "C:\\Users\\Mag\\Desktop\\react-frontend\\src\\components\\countdowntimer\\alarm.mp3";
+import Sound from "./alarm.mp3";
 
 
 const ExpiredNotice = () => {
@@ -56,10 +56,10 @@ function parseUrlArgs(args) {
 const CountdownTimer = ({urlArgs}) => {
     let validUrlArgs = parseUrlArgs(urlArgs);
     const [timeRemaining, setTimeRemaining] = useState(validUrlArgs ? validUrlArgs : 0);
+    const [alarmState, setAlarmState] = useState(validUrlArgs ? false : true);
     //automatically run if args are entered into the url for speed
-    const [running, setRunning] = useState(false);
+    const [running, setRunning] = useState(validUrlArgs ? true : false);
     const [alertState, setAlerted] = useState(false);
-
 
     function resetStates () {
         setTimeRemaining(0);
@@ -90,18 +90,24 @@ const CountdownTimer = ({urlArgs}) => {
     let decrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining - 60000)}>-1 Minute</button>
     let decrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining - 1000)}>-1 Second</button>
 
-    if (running && timeRemaining <= 0) {
-        if (!alertState) {
-            setAlerted(true);
-            const alarm = new Audio(Sound);
-            alarm.load();
-            alarm.play();
-            return (
-                <div>
-                    <ExpiredNotice/>
-                    {resetTimerButton}
-                </div>)
+    let alarmButton = <label><input id="alarmButton" type="checkbox" onClick={() => setAlarmState(!alarmState)}/> Alarm</label>
+    
+    window.onload = function() {
+        if (alarmState) {
+            document.getElementById("alarmButton").checked = true;
         }
+    }
+
+    if (running && timeRemaining <= 0 && !alertState && alarmState) {
+        setAlerted(true);
+        const alarm = new Audio(Sound);
+        alarm.load();
+        alarm.play();
+        return (
+            <div>
+                <ExpiredNotice/>
+                {resetTimerButton}
+            </div>)
     }
 
     if (timeRemaining < 0) resetStates()
@@ -122,13 +128,15 @@ const CountdownTimer = ({urlArgs}) => {
                 {decrementSecondsButton}
                 {resetTimerButton}
 
+                {alarmButton}
+
             </div>
         </div>);
 }
 
 
 export default CountdownTimer;
-// change window title to current timer remaining
 //add ability to type desired time
 //add BIG buttons to start and BIG numbers
 //perhaps add some sort of autostart if it's not started within x seconds, wouldn't be able to alert though
+//change colour of alarm from red to green and make it massive. 
