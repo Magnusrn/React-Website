@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Sound from "./alarm.mp3";
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import styles from "./CountdownTimer.module.css"
 
 
 const ExpiredNotice = () => {
@@ -79,8 +81,8 @@ const CountdownTimer = ({urlArgs}) => {
     }, [running]);
 
     //seems to be taking 1s longer than it always should, may need to decrement the time by 1 immediately on clicking the start button, though this isn't ideal as it's a logic issue
-    let startStopButton = running ? <Button onClick={() => setRunning(false)}>Stop</Button> :
-        <Button onClick={() => setRunning(true)}>Start</Button>
+    let startStopButton = running ? <Button className={`btn btn-warning btn-xl ${styles.btn_xl} `} onClick={() => setRunning(false)}>Stop</Button> :
+        <Button className={`btn btn-success ${styles.btn_xl}`} onClick={() => setRunning(true)}>Start</Button>
     let resetTimerButton = <Button onClick={() => resetStates() }>Reset</Button>
 
     let incrementHoursButton = <Button onClick={() => setTimeRemaining(timeRemaining + 3600000)}>+1 Hour</Button>
@@ -90,14 +92,9 @@ const CountdownTimer = ({urlArgs}) => {
     let decrementHoursButton = <Button onClick={() => setTimeRemaining(timeRemaining - 3600000)}>-1 Hour</Button>
     let decrementMinutesButton = <Button onClick={() => setTimeRemaining(timeRemaining - 60000)}>-1 Minute</Button>
     let decrementSecondsButton = <Button onClick={() => setTimeRemaining(timeRemaining - 1000)}>-1 Second</Button>
-
-    let alarmButton = <Button variant="danger" type="checkbox" onClick={() => setAlarmState(!alarmState)}> Alarm</Button>
     
-    window.onload = function() {
-        if (alarmState) {
-            document.getElementById("alarmButton").checked = true;
-        }
-    }
+    let AlarmButtonToggle = alarmState ? <Button className="btn btn-danger" onClick={() => setAlarmState(false)}>Disable Alarm</Button> :
+    <Button className="btn btn-success" onClick={() => setAlarmState(true)}>Enable Alarm</Button>
 
     if (running && timeRemaining <= 0 && !alertState && alarmState) {
         setAlerted(true);
@@ -129,7 +126,7 @@ const CountdownTimer = ({urlArgs}) => {
                 {decrementSecondsButton}
                 {resetTimerButton}
 
-                {alarmButton}
+                {AlarmButtonToggle}
 
             </div>
         </div>);
