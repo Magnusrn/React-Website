@@ -17,8 +17,8 @@ function Timer() {
             <br/>
             <br/>
 
-            Simple countdown timer that can quickly be started by entering magnus.one/t/(mins)m(seconds), Unfortunately requires manually enabling the alarm otherwise the alarm is blocked by
-            browsers
+            Simple countdown timer that can quickly be started by entering magnus.one/t/(mins)m(seconds). Created to replace the mysteriously missing google timer which has since been returned, though this has better support for time arguments. Audio is quite fickle, doesn't seem consistent on mobile and unfortunately requires manually enabling the alarm if using url args otherwise the alarm is blocked by
+            browsers.
         </div>
     );
 }

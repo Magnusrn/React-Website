@@ -95,6 +95,7 @@ const CountdownTimer = ({urlArgs}) => {
     
     let AlarmButtonToggle = alarmState ? <Button className="btn btn-danger" onClick={() => setAlarmState(false)}>Disable Alarm</Button> :
     <Button className="btn btn-success" onClick={() => setAlarmState(true)}>Enable Alarm</Button>
+    
 
     if (running && timeRemaining <= 0 && !alertState && alarmState) {
         setAlerted(true);
@@ -138,3 +139,4 @@ export default CountdownTimer;
 //add BIG buttons to start and BIG numbers
 //perhaps add some sort of autostart if it's not started within x seconds, wouldn't be able to alert though
 //change colour of alarm from red to green and make it massive. 
+//change button to start when time runs out
