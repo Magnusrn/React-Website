@@ -1,3 +1,22 @@
-.navbarContainer {
+.navbarHolder {
   background-color: rgba(0, 255, 255, 0);
+  position:fixed;
+  z-index:9999 !important;
+  top:0;
 }
+
+/* p {
+  margin: 16px;
+  font-size: 96px;
+  color: #ccc;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: all 1s ease-in-out;
+  position: relative;
+}
+
+p:hover {
+  background-color: yellow;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+} */
