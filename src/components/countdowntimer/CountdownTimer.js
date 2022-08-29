@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Sound from "./alarm.mp3";
+import Button from 'react-bootstrap/Button';
 
 
 const ExpiredNotice = () => {
@@ -78,19 +79,19 @@ const CountdownTimer = ({urlArgs}) => {
     }, [running]);
 
     //seems to be taking 1s longer than it always should, may need to decrement the time by 1 immediately on clicking the start button, though this isn't ideal as it's a logic issue
-    let startStopButton = running ? <button onClick={() => setRunning(false)}>Stop</button> :
-        <button onClick={() => setRunning(true)}>Start</button>
-    let resetTimerButton = <button onClick={() => resetStates() }>Reset</button>
+    let startStopButton = running ? <Button onClick={() => setRunning(false)}>Stop</Button> :
+        <Button onClick={() => setRunning(true)}>Start</Button>
+    let resetTimerButton = <Button onClick={() => resetStates() }>Reset</Button>
 
-    let incrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining + 3600000)}>+1 Hour</button>
-    let incrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining + 60000)}>+1 Minute</button>
-    let incrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining + 1000)}>+1 Second</button>
+    let incrementHoursButton = <Button onClick={() => setTimeRemaining(timeRemaining + 3600000)}>+1 Hour</Button>
+    let incrementMinutesButton = <Button onClick={() => setTimeRemaining(timeRemaining + 60000)}>+1 Minute</Button>
+    let incrementSecondsButton = <Button onClick={() => setTimeRemaining(timeRemaining + 1000)}>+1 Second</Button>
 
-    let decrementHoursButton = <button onClick={() => setTimeRemaining(timeRemaining - 3600000)}>-1 Hour</button>
-    let decrementMinutesButton = <button onClick={() => setTimeRemaining(timeRemaining - 60000)}>-1 Minute</button>
-    let decrementSecondsButton = <button onClick={() => setTimeRemaining(timeRemaining - 1000)}>-1 Second</button>
+    let decrementHoursButton = <Button onClick={() => setTimeRemaining(timeRemaining - 3600000)}>-1 Hour</Button>
+    let decrementMinutesButton = <Button onClick={() => setTimeRemaining(timeRemaining - 60000)}>-1 Minute</Button>
+    let decrementSecondsButton = <Button onClick={() => setTimeRemaining(timeRemaining - 1000)}>-1 Second</Button>
 
-    let alarmButton = <label><input id="alarmButton" type="checkbox" onClick={() => setAlarmState(!alarmState)}/> Alarm</label>
+    let alarmButton = <Button variant="danger" type="checkbox" onClick={() => setAlarmState(!alarmState)}> Alarm</Button>
     
     window.onload = function() {
         if (alarmState) {
