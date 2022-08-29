@@ -28,6 +28,7 @@ const NavigationBar = () => {
                 <Nav.Link href="/blog">Blog</Nav.Link>
                 <Nav.Link href="/contact">Contact</Nav.Link>
                 <Nav.Link href="/timer">Timer</Nav.Link>
+                <Nav.Link href="/stopwatch">Stopwatch</Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>

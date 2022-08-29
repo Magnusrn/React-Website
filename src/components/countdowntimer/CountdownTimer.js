@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Sound from "./alarm.mp3";
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import styles from "./CountdownTimer.module.css"
 
 
@@ -57,6 +56,10 @@ function parseUrlArgs(args) {
 
 
 const CountdownTimer = ({urlArgs}) => {
+    window.onbeforeunload = function () {
+        return running;
+    };
+
     let validUrlArgs = parseUrlArgs(urlArgs);
     const [timeRemaining, setTimeRemaining] = useState(validUrlArgs ? validUrlArgs : 0);
     const [alarmState, setAlarmState] = useState(validUrlArgs ? false : true);
@@ -93,7 +96,7 @@ const CountdownTimer = ({urlArgs}) => {
     let decrementMinutesButton = <Button onClick={() => setTimeRemaining(timeRemaining - 60000)}>-1 Minute</Button>
     let decrementSecondsButton = <Button onClick={() => setTimeRemaining(timeRemaining - 1000)}>-1 Second</Button>
     
-    let AlarmButtonToggle = alarmState ? <Button className="btn btn-danger" onClick={() => setAlarmState(false)}>Disable Alarm</Button> :
+    let alarmToggle = alarmState ? <Button className="btn btn-danger" onClick={() => setAlarmState(false)}>Disable Alarm</Button> :
     <Button className="btn btn-success" onClick={() => setAlarmState(true)}>Enable Alarm</Button>
     
 
@@ -127,7 +130,7 @@ const CountdownTimer = ({urlArgs}) => {
                 {decrementSecondsButton}
                 {resetTimerButton}
 
-                {AlarmButtonToggle}
+                {alarmToggle}
 
             </div>
         </div>);
