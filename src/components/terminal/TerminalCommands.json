@@ -1,0 +1,9 @@
+[
+    {"command":"joke", "description": "Tell a joke", "aliases" : []},
+    {"command":"dog", "description": "Tell a dog fact from dog api", "aliases" : []},
+    {"command":"monkey", "description": "Tell a monkey fact from monkey api", "aliases" : []},
+    {"command":"history", "description": "provide history of entered commands, activate these with !{index} where {index} is command index", "aliases" : []},
+    {"command":"clear", "description": "clear the terminal", "aliases" : ["cls","cl"]},
+    {"command":"cd", "description": "cd {link}- redirect to %home/{link}", "aliases" : []},
+    {"command":"", "description": "Supports basic maths by entering equations", "aliases" : []}
+]

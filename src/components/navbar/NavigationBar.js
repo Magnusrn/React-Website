@@ -30,6 +30,9 @@ const NavigationBar = () => {
                 <Nav.Link href="/timer">Timer</Nav.Link>
                 <Nav.Link href="/stopwatch">Stopwatch</Nav.Link>
                 <Nav.Link href="/terminal">Terminal</Nav.Link>
+                <a className={styles.githubIcon} href="https://github.com/magnusrn">
+                  <i className="fa-brands fa-github githubIcon"></i>
+                </a>
               </Nav>
             </Navbar.Collapse>
           </Container>

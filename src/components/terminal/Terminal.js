@@ -1,13 +1,21 @@
 import React from 'react';
 import { XTerm } from 'xterm-for-react';
 import data from "./api/dogfacts/DogFacts.json";
+import TerminalCommands from "./TerminalCommands.json";
+import styles from "./Terminal.module.css"
+import {evaluate as evaluateMath} from 'mathjs';
 
 const Terminal = () => {
     const xtermRef = React.useRef(null)
     React.useEffect(() => {
         renderTerminal(xtermRef);
       }, []);
-    return (<XTerm ref={xtermRef}/>)
+    return (
+        <div className={styles.terminal}>
+            {/* cols is character count per line */}
+            <XTerm ref={xtermRef} options={{rows:10,cols:150}}/>
+        </div>
+    )
 }
 
 export default Terminal;
@@ -63,19 +71,19 @@ function evaluateCommand(terminal,history,command) {
     }
     switch (command) {
         case "help":
-            return("joke - Tell a joke from x api\n\rdog - Tell a dog fact from dog api\n\rmonkey - Tell a monkey fact from monkey api\n\rhistory - provide history from entered commands,activate these with !{index} " +
-                "where {index} is command index\n\rclear/cl/cls - clear the terminal\n\rcd {link}- move to current url+{link}\n\ralso supports maths simply by typing in equation ")
+            let msg = "";
+            TerminalCommands.forEach((obj) => {
+                msg+=`${obj["command"]}${obj["aliases"].length>0 ? "(" + obj["aliases"] + ")": ""} ${obj["description"]} \n\r`
+            })
+                
+            return msg
         case "joke":
             return;
         case "dog":
             //not sure if it would be better practice to access the backend API for this
-            // Create array of object keys
             let keys = Object.keys(data)
-            // Generate random index based on number of keys
             let randIndex = Math.floor(Math.random() * keys.length)
-            // Select a key from the array of keys using the random index
             let randKey = keys[randIndex]
-            // Use the key to get the corresponding name from the "names" object
             let fact = data[randKey]["fact"]
             writeLine(terminal,fact,true);
             return;
@@ -83,10 +91,14 @@ function evaluateCommand(terminal,history,command) {
             //idr what i was planning to do for this
             return;
         case "history":
-            history.forEach(function callback(entry, index) {
+            history.forEach((entry, index)=> {
                 writeLine(terminal,index + " " + entry, true);
             });
             return;
+        case "!!":
+            //kinda shitty but figured i'd add anyway, would be more interesting to have the ability to use anywhere in commands e.g !! *5
+            //has to check 2nd last item as the history gets populated with the command before running it.
+            return evaluateCommand(terminal,history,history[history.length-2])
         case "clear":
         case "cls":
         case "cl":
@@ -99,19 +111,19 @@ function evaluateCommand(terminal,history,command) {
                 window.location.href = command.split(" ")[1]
                 return;
             }
-
+            
             if (new RegExp('!\\d+').test(command))
             {
                 let historyIndex = command.slice(1,)
                 return evaluateCommand(terminal, history, history[historyIndex])
             }
-            return("Unsupported command: " + command)
-            //not safe to use, manually implement math perhaps    
-            // try {
-            //     return(""+ eval(command))
-            // } catch (e) {
-            //     return("Unsupported command: " + command)
-            // }
+            //https://mathjs.org/docs/expressions/security.html
+            //math.eval used for security reason 
+            try {
+                return(""+ evaluateMath(command))
+            } catch (e) {
+                return("Unsupported command: " + command)
+            }
     }
 }
 
