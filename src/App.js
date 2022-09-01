@@ -9,7 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from "./components/footer/Footer";
 import Stopwatch from "./pages/Stopwatch";
 import styles from "./App.module.css"
-import Terminal from './components/terminal/Terminal';
+import Terminal from './pages/Terminal';
 
 export default function App() {
     return (

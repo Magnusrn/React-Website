@@ -1,12 +1,13 @@
-import Terminal from "../components/terminal/Terminal";
+import RenderTerminal from "../components/terminal/Terminal";
+import styles from "./Terminal.module.css"
 
-function Timer() {
+function Terminal() {
     return (
         <div>
-            <h1>Terminal</h1>
-            <Terminal/>
+            <h1 className={styles.title}>Terminal</h1>
+            <RenderTerminal/>
         </div>
     );
 }
 
-export default Timer;
+export default Terminal;

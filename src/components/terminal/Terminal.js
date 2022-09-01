@@ -6,7 +6,7 @@ import TerminalCommands from "./TerminalCommands.json";
 import styles from "./Terminal.module.css"
 import {evaluate as evaluateMath} from 'mathjs';
 
-const Terminal = () => {
+const RenderTerminal = () => {
     const xtermRef = React.useRef(null)
     React.useEffect(() => {
         renderTerminal(xtermRef);
@@ -14,12 +14,12 @@ const Terminal = () => {
     return (
         <div className={styles.terminal}>
             {/* cols is character count per line */}
-            <XTerm ref={xtermRef} options={{rows:15,cols:150}}/>
+            <XTerm ref={xtermRef} options={{rows:15,cols:100}}/>
         </div>
     )
 }
 
-export default Terminal;
+export default RenderTerminal;
 
 // //move commands to possibly some dict so i can list them in COMMANDS, each with a brief description and aliases
 // add autocomplete with an iterator
