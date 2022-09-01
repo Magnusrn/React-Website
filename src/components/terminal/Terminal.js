@@ -13,6 +13,7 @@ const Terminal = () => {
 export default Terminal;
 
 // //move commands to possibly some dict so i can list them in COMMANDS, each with a brief description and aliases
+// add autocomplete with an iterator
 
 
 function renderTerminal(xtermRef) {
@@ -67,6 +68,7 @@ function evaluateCommand(terminal,history,command) {
         case "joke":
             return;
         case "dog":
+            //not sure if it would be better practice to access the backend API for this
             // Create array of object keys
             let keys = Object.keys(data)
             // Generate random index based on number of keys
@@ -78,6 +80,7 @@ function evaluateCommand(terminal,history,command) {
             writeLine(terminal,fact,true);
             return;
         case "monkey":
+            //idr what i was planning to do for this
             return;
         case "history":
             history.forEach(function callback(entry, index) {
@@ -92,7 +95,6 @@ function evaluateCommand(terminal,history,command) {
         default:
             if (new RegExp('^cd *').test(command))
             {
-                console.log("moving to page {page}")
                 //not sure this is the best way to do this(having redirects outside of react router) but unsure of the optimal way
                 window.location.href = command.split(" ")[1]
                 return;
@@ -114,7 +116,6 @@ function evaluateCommand(terminal,history,command) {
 }
 
 function writeLine(terminal,message,newLine) {
-    console.log(message)
     if (!message) return;
     terminal.write(message)
     if (!newLine) return;

@@ -56,8 +56,8 @@ function parseUrlArgs(args) {
 
 const CountdownTimer = ({urlArgs}) => {
     //prevent leaving if timer is running, buggy at the moment.
-    window.onbeforeunload = function () {
-        return running;
+    window.onbeforeunload = () => {
+        return !running;
     };
 
     let validUrlArgs = parseUrlArgs(urlArgs);
