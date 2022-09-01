@@ -1,22 +1,90 @@
 .navbarHolder {
-  background-color: rgba(0, 255, 255, 0);
-  position:fixed;
-  z-index:9999 !important;
-  top:0;
-}
-
-/* p {
-  margin: 16px;
-  font-size: 96px;
-  color: #ccc;
-  text-transform: uppercase;
-  font-weight: 600;
-  transition: all 1s ease-in-out;
-  position: relative;
-}
-
-p:hover {
-  background-color: yellow;
   width: 100%;
-  transition: all 0.5s ease-in-out;
+  height:50px;
+  position:fixed;
+  top:0;
+  display:flex;
+  z-index:9999 !important;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+/*
+.navbarItems {
+  flex:1 !important;
+  background-color: red;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbarItem {
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer; */
+
+
+/* .navbar {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.left, .right {
+  flex:3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.centre {
+  flex:6;
+}
+
+.navbarItems {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbarItem {
+  margin-right: 20px;
+  font-size: 18px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.navbarItem:hover {
+  color:gray;
+}
+
+.profilePhoto {
+  border-radius:50%;
+  width:40px;
+  height:40px;
+  object-fit : cover;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.githubIcon {
+  font-size: 40px;
+  margin-right: 10px;
+  color: #444;
+  cursor: pointer;
+}
+
+.searchIcon {
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+  margin-left:15px;
 } */

@@ -54,8 +54,8 @@ function parseUrlArgs(args) {
     return finalTimeInMillis;
 }
 
-
 const CountdownTimer = ({urlArgs}) => {
+    //prevent leaving if timer is running, buggy at the moment.
     window.onbeforeunload = function () {
         return running;
     };
@@ -84,8 +84,8 @@ const CountdownTimer = ({urlArgs}) => {
     }, [running]);
 
     //seems to be taking 1s longer than it always should, may need to decrement the time by 1 immediately on clicking the start button, though this isn't ideal as it's a logic issue
-    let startStopButton = running ? <Button className={`btn btn-warning btn-xl ${styles.btn_xl} `} onClick={() => setRunning(false)}>Stop</Button> :
-        <Button className={`btn btn-success ${styles.btn_xl}`} onClick={() => setRunning(true)}>Start</Button>
+    let startStopButton = running ? <Button className={`btn btn-warning ${styles.btn_xl}`} onClick={() => setRunning(false)}>Stop</Button> :
+                                    <Button className={`btn btn-success ${styles.btn_xl}`} onClick={() => setRunning(true)}>Start</Button>
     let resetTimerButton = <Button onClick={() => resetStates() }>Reset</Button>
 
     let incrementHoursButton = <Button onClick={() => setTimeRemaining(timeRemaining + 3600000)}>+1 Hour</Button>
@@ -140,6 +140,4 @@ const CountdownTimer = ({urlArgs}) => {
 export default CountdownTimer;
 //add ability to type desired time
 //add BIG buttons to start and BIG numbers
-//perhaps add some sort of autostart if it's not started within x seconds, wouldn't be able to alert though
-//change colour of alarm from red to green and make it massive. 
-//change button to start when time runs out
+//seems to be preventing leaving even if not running(run through xterm)
