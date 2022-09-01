@@ -36,3 +36,5 @@ export default function App() {
         </div>
     );
 }
+//todo
+//add ci to github

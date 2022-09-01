@@ -22,16 +22,16 @@ const NavigationBar = () => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="mr-auto">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/about">About</Nav.Link>
-                <Nav.Link href="/blog">Blog</Nav.Link>
-                <Nav.Link href="/contact">Contact</Nav.Link>
-                <Nav.Link href="/timer">Timer</Nav.Link>
-                <Nav.Link href="/stopwatch">Stopwatch</Nav.Link>
-                <Nav.Link href="/terminal">Terminal</Nav.Link>
+              <Nav className="m-auto">
+                <Nav.Link className={styles.navbarItem} href="/">Home</Nav.Link>
+                <Nav.Link className={styles.navbarItem} href="/about">About</Nav.Link>
+                <Nav.Link className={styles.navbarItem} href="/blog">Blog</Nav.Link>
+                <Nav.Link className={styles.navbarItem} href="/contact">Contact</Nav.Link>
+                <Nav.Link className={styles.navbarItem} href="/timer">Timer</Nav.Link>
+                <Nav.Link className={styles.navbarItem} href="/stopwatch">Stopwatch</Nav.Link>
+                <Nav.Link className={styles.navbarItem} href="/terminal">Terminal</Nav.Link>
                 <a className={styles.githubIcon} href="https://github.com/magnusrn">
-                  <i className="fa-brands fa-github githubIcon"></i>
+                  <i className="fa-brands fa-github"></i>
                 </a>
               </Nav>
             </Navbar.Collapse>

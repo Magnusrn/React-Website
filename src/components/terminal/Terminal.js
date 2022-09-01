@@ -1,6 +1,7 @@
 import React from 'react';
 import { XTerm } from 'xterm-for-react';
-import data from "./api/dogfacts/DogFacts.json";
+import dogFacts from "./api/dogfacts/DogFacts.json";
+import facts from "./api/facts/Facts.json";
 import TerminalCommands from "./TerminalCommands.json";
 import styles from "./Terminal.module.css"
 import {evaluate as evaluateMath} from 'mathjs';
@@ -13,7 +14,7 @@ const Terminal = () => {
     return (
         <div className={styles.terminal}>
             {/* cols is character count per line */}
-            <XTerm ref={xtermRef} options={{rows:10,cols:150}}/>
+            <XTerm ref={xtermRef} options={{rows:15,cols:150}}/>
         </div>
     )
 }
@@ -79,16 +80,22 @@ function evaluateCommand(terminal,history,command) {
             return msg
         case "joke":
             return;
-        case "dog":
+        case "dogfact":
+        case "df":
             //not sure if it would be better practice to access the backend API for this
-            let keys = Object.keys(data)
+            let dfKeys = Object.keys(dogFacts)
+            let dfRandIndex = Math.floor(Math.random() * dfKeys.length)
+            let dfRandKey = dfKeys[dfRandIndex]
+            let dfFact = dogFacts[dfRandKey]["fact"]
+            writeLine(terminal,dfFact,true);
+            return;
+        case "fact":
+        case "f":
+            let keys = Object.keys(facts["facts"])
             let randIndex = Math.floor(Math.random() * keys.length)
             let randKey = keys[randIndex]
-            let fact = data[randKey]["fact"]
+            let fact = facts["facts"][randKey]
             writeLine(terminal,fact,true);
-            return;
-        case "monkey":
-            //idr what i was planning to do for this
             return;
         case "history":
             history.forEach((entry, index)=> {
