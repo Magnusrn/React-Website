@@ -1,5 +1,6 @@
 import React from 'react';
 import { XTerm } from 'xterm-for-react';
+import data from "./api/dogfacts/DogFacts.json";
 
 const Terminal = () => {
     const xtermRef = React.useRef(null)
@@ -66,6 +67,15 @@ function evaluateCommand(terminal,history,command) {
         case "joke":
             return;
         case "dog":
+            // Create array of object keys
+            let keys = Object.keys(data)
+            // Generate random index based on number of keys
+            let randIndex = Math.floor(Math.random() * keys.length)
+            // Select a key from the array of keys using the random index
+            let randKey = keys[randIndex]
+            // Use the key to get the corresponding name from the "names" object
+            let fact = data[randKey]["fact"]
+            writeLine(terminal,fact,true);
             return;
         case "monkey":
             return;
@@ -94,7 +104,7 @@ function evaluateCommand(terminal,history,command) {
                 return evaluateCommand(terminal, history, history[historyIndex])
             }
             return("Unsupported command: " + command)
-            //find out if this just evalatutes or executes, if the latter DO NOT USE    
+            //not safe to use, manually implement math perhaps    
             // try {
             //     return(""+ eval(command))
             // } catch (e) {
