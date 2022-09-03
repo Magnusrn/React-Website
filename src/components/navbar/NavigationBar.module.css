@@ -1,102 +1,188 @@
-.navbarHolder {
-  width: 100%;
-  height:50px;
-  position:fixed;
-  top:0;
-  display:flex;
-  z-index:9999 !important;
-  font-family: "Josefin Sans", sans-serif;
-  padding-top:10px;
-  box-shadow: 0 2px 20px -2px rgba(0,0,0,.2);
-}
+/*======================================================
+                          Navbar
+  ======================================================*/
 
-.githubIcon {
-  font-size: 40px ;
-  margin-left:250px;
-  color: rgb(255, 0, 0);
-}
-
-.githubIcon:hover {
-  transform: scale(1.25); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
-}
-
-.navbarItem { 
-  margin-right: 20px;
-  font-size: 20px !important;
-}
-
-.navbarItem:hover{
-  transition: all 0.25s ease;
-  transform: scale(1.15);
-}
-
-/*
-.navbarItems {
-  flex:1 !important;
-  background-color: red;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-
-
-/* .navbar {
-  width: 100%;
-  height: 50px;
+.navbar {
+  background: #fff;
+  color: #0d1a26;
   position: fixed;
   top: 0;
-  display: flex;
-  align-items: center;
-  z-index: 999;
-  font-family: "Josefin Sans", sans-serif;
+  height: 80px;
+  line-height: 80px;
+  width: 100%;
+  z-index: 10;
 }
 
-.left, .right {
-  flex:3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.navWrapper {
+  text-align: center;
+  width: 70%;
+  margin: auto;
 }
 
-.centre {
-  flex:6;
+.logo a {
+  font-size: 1.5em;
+  height: 60px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
 }
 
-.navbarItems {
-  display: flex;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
+.navbar ul {
   list-style: none;
+  text-align: right;
+  transition: transform 0.5s ease-out;
+  -webkit-transition: transform 0.5s ease-out;
 }
 
-.navbarItem {
-  margin-right: 20px;
-  font-size: 18px;
-  font-weight: 300;
-  cursor: pointer;
+.navbar .menu,
+.navbar li {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-.navbarItem:hover {
-  color:gray;
+.navbar li a {
+  color: #0d1a26;
+  display: block;
+  font-size: 0.7em;
+  height: 60px;
+  letter-spacing: 1px;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  margin: 0 30px;
+  padding: 0 4px;
 }
 
-.profilePhoto {
-  border-radius:50%;
-  width:40px;
-  height:40px;
-  object-fit : cover;
-  margin-right: 15px;
-  cursor: pointer;
+.navbar li a:hover {
+  color: #1c79b8;
+  transition: all 1s ease;
+  -webkit-transition: all 1s ease;
 }
 
+.navbar .logo, .navbar .logo a,
+.navbar li a {
+  display: inline-block;
+  position: relative;
+  color: #060606;
+}
 
+.navbar .logo a:after,
+.navbar li a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  transform-origin: bottom left;
+  transition: transform 0.5s ease-out;
+}
 
-.searchIcon {
-  font-size: 18px;
-  color: #666;
-  cursor: pointer;
-  margin-left:15px;
+.navbar .logo a:hover:after,
+.navbar li a:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+@media (max-width: 1068px) {
+  .navWrapper {
+    width: 95%;
+  }
+}
+
+@media (max-width: 780px) {
+  .navbar .menu {
+    display: none;
+  }
+}
+
+/*======================================================
+                     Responsive Mobile Menu 
+    ======================================================*/
+/* .overlayMenu {
+    background: lightblue;
+    color: rgb(13, 26, 38);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-right: 15px;
+    transform: translateX(-100%);
+    width: 100vw;
+    height: 100vh;
+    -webkit-transition: transform 0.2s ease-out;
+    transition: transform 0.2s ease-out;
+  }
+  
+  .overlayMenu ul, .overlayMenu li {
+    display: block;
+    position: relative;
+  }
+  
+  .overlayMenu li a {
+    display: block;
+    font-size: 1.8em;
+    letter-spacing: 4px;
+    padding: 10px 0;
+    text-align: right;
+    text-transform: uppercase;
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+  }
+  
+  .overlayMenu li a:hover,
+  .overlayMenu li a:active {
+    color: rgb(28, 121, 184);
+    -webkit-transition: color 0.3s ease;
+    transition: color 0.3s ease;
+  } */
+
+/*======================================================
+                   Responsive Mobile Menu 
+  ======================================================*/
+/* .overlayMenu {
+  background: lightblue;
+  color: rgb(13, 26, 38);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 15px;
+  transform: translateX(-100%);
+  width: 100vw;
+  height: 100vh;
+  -webkit-transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+}
+
+.overlayMenu ul, .overlayMenu li {
+  display: block;
+  position: relative;
+}
+
+.overlayMenu li a {
+  display: block;
+  font-size: 1.8em;
+  letter-spacing: 4px;
+  padding: 10px 0;
+  text-align: right;
+  text-transform: uppercase;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+.overlayMenu li a:hover,
+.overlayMenu li a:active {
+  color: rgb(28, 121, 184);
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 } */

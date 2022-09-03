@@ -13,8 +13,7 @@ import Terminal from './pages/Terminal';
 
 export default function App() {
     return (
-        <div>
-        <style>{"body { background-color: grey; }"}</style>
+        <div className={styles.app}>
         <BrowserRouter>
             <NavigationBar/>
             <div className={styles.body}>
@@ -38,3 +37,4 @@ export default function App() {
 }
 //todo
 //add ci to github
+//may need to load the audio on page load instead of when it needs to be played as browsers restrict resources for inactive tabs
