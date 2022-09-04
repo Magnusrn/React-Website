@@ -91,7 +91,7 @@
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 800px) {
   .navbar .menu {
     display: none;
   }
@@ -105,7 +105,7 @@
   }
 }
 
-@media (min-width: 780px) {
+@media (min-width: 801px) {
   .hamburgerMenu {
     display:none;
   }
@@ -133,4 +133,3 @@
   text-align: center;
 }
 /* Remove the underlines on click on mobile i think, looks kinda weird. */
-/*modify mobile width params since addition of burger menu  */
