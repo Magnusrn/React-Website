@@ -1,15 +1,22 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./NavigationBar.module.css";
 
 const NavigationBar = () => {
+  let [burgerMenuVisible, setBurgerMenuVisible] = useState(false);
+  
+  const toggleBurgerMenu = () => {
+    // 👇️ toggle shown state
+    setBurgerMenuVisible(!burgerMenuVisible);
+  };
+
   return (
     <div>
       <nav className={styles.navbar}>
         <div className={styles.navWrapper}>
-            <div className={styles.logo}>
-              <a href="/">Magnus</a>
-            </div>
-            <ul className={styles.menu}>
+          <div className={styles.logo}>
+            <a href="/">Magnus</a>
+          </div>
+          <ul className={styles.menu}>
             <li>
               <a href="/">Home</a>
             </li>
@@ -26,35 +33,30 @@ const NavigationBar = () => {
               <a href="terminal">Terminal</a>
             </li>
           </ul>
+          <div className={styles.hamburgerMenu} onClick={toggleBurgerMenu}>
+            <i class="fa-solid fa-bars"></i>
+          </div>
         </div>
       </nav>
 
-      {/* <div className={`${styles.menuIcon} ${styles.toggleIcon}`} >
-        <span className={`${styles.icon} ${styles.iconBars}`}></span>
-        <span
-          className={`${styles.icon} ${styles.iconBars} ${styles.overlay}`}
-        ></span>
-      </div>
-
-      <div className={styles.overlayMenu}>
-        <ul id={styles.menu}>
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="about">About</a>
-          </li>
-          <li>
-            <a href="contact">Contact</a>
-          </li>
-          <li>
-            <a href="timer">Timer</a>
-          </li>
-          <li>
-            <a href="terminal">Terminal</a>
-          </li>
-        </ul>
-      </div> */}
+      {burgerMenuVisible && (<div className={styles.mobileMenu}>
+        <li>
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <a href="about">About</a>
+        </li>
+        <li>
+          <a href="contact">Contact</a>
+        </li>
+        <li>
+          <a href="timer">Timers</a>
+        </li>
+        <li>
+          <a href="terminal">Terminal</a>
+        </li>
+      </div>) }
+      
     </div>
   );
 };

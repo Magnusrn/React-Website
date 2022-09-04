@@ -5,5 +5,5 @@
     {"command":"history", "description": "provide history of entered commands, activate these with !{index} where {index} is command index", "aliases" : []},
     {"command":"clear", "description": "clear the terminal", "aliases" : ["cls","cl"]},
     {"command":"cd", "description": "redirect to magnus.one/{link}", "aliases" : []},
-    {"command":"", "description": "Supports basic maths by entering equations", "aliases" : []}
+    {"command":"", "description": "\bSupports basic maths by entering equations", "aliases" : []}
 ]

@@ -99,90 +99,28 @@
   .navbar .menu {
     display: none;
   }
-}
 
-/*======================================================
-                     Responsive Mobile Menu 
-    ======================================================*/
-/* .overlayMenu {
-    background: lightblue;
-    color: rgb(13, 26, 38);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding-right: 15px;
-    transform: translateX(-100%);
-    width: 100vw;
-    height: 100vh;
-    -webkit-transition: transform 0.2s ease-out;
-    transition: transform 0.2s ease-out;
+  .hamburgerMenu {
+    display: inline-block;
+    padding-left:30px;
   }
-  
-  .overlayMenu ul, .overlayMenu li {
-    display: block;
-    position: relative;
+  .hamburgerMenu:hover {
+    cursor:pointer;
   }
-  
-  .overlayMenu li a {
-    display: block;
-    font-size: 1.8em;
-    letter-spacing: 4px;
-    padding: 10px 0;
-    text-align: right;
-    text-transform: uppercase;
-    -webkit-transition: color 0.3s ease;
-    transition: color 0.3s ease;
+}
+
+@media (min-width: 780px) {
+  .hamburgerMenu {
+    display:none;
   }
-  
-  .overlayMenu li a:hover,
-  .overlayMenu li a:active {
-    color: rgb(28, 121, 184);
-    -webkit-transition: color 0.3s ease;
-    transition: color 0.3s ease;
-  } */
-
-/*======================================================
-                   Responsive Mobile Menu 
-  ======================================================*/
-/* .overlayMenu {
-  background: lightblue;
-  color: rgb(13, 26, 38);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding-right: 15px;
-  transform: translateX(-100%);
-  width: 100vw;
-  height: 100vh;
-  -webkit-transition: transform 0.2s ease-out;
-  transition: transform 0.2s ease-out;
+  /* hide mobilemenu if it's left open when increasing from mobile width */
+  .mobileMenu {
+    display:none;
+  }
 }
 
-.overlayMenu ul, .overlayMenu li {
-  display: block;
-  position: relative;
+.mobileMenu {
+  padding-top: 80px;
 }
 
-.overlayMenu li a {
-  display: block;
-  font-size: 1.8em;
-  letter-spacing: 4px;
-  padding: 10px 0;
-  text-align: right;
-  text-transform: uppercase;
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
-}
-
-.overlayMenu li a:hover,
-.overlayMenu li a:active {
-  color: rgb(28, 121, 184);
-  -webkit-transition: color 0.3s ease;
-  transition: color 0.3s ease;
-} */
+/* Remove the underlines on click on mobile i think, looks kinda weird. */

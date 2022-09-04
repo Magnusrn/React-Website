@@ -30,7 +30,7 @@ export default function App() {
                 <Route path="*" element={<NoPage/>}/>
             </Routes>
             </div>
-            <Footer/>
+            {/* <Footer/> */}
         </BrowserRouter>
         </div>
     );
