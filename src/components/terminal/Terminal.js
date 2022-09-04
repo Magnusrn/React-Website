@@ -2,6 +2,7 @@ import React from 'react';
 import { XTerm } from 'xterm-for-react';
 import dogFacts from "./api/dogfacts/DogFacts.json";
 import facts from "./api/facts/Facts.json";
+import jokes from "./api/jokes/jokes.json";
 import TerminalCommands from "./TerminalCommands.json";
 import styles from "./Terminal.module.css"
 import {evaluate as evaluateMath} from 'mathjs';
@@ -56,47 +57,43 @@ function renderTerminal(xtermRef) {
     })
 }
 
-// function toggleVisibility(){
-//     const element = document.getElementById("terminal");
-//     if(element.style.display === "none"){
-//         element.style.display = "block";
-//         return;
-//     }
-//     element.style.display = "none";
-// }
-
 function evaluateCommand(terminal,history,command) {
     if (!new RegExp('!\\d+').test(command))
     {
         history.push(command)
     }
-    switch (command) {
+    switch (command.split(" ")[0]) {
         case "help":
             let msg = "";
+            //formats and prints all commands from terminalcommands
             TerminalCommands.forEach((obj) => {
                 msg+=`${obj["command"]}${obj["aliases"].length>0 ? "(" + obj["aliases"] + ")": ""} ${obj["description"]} \n\r`
             })
                 
             return msg
         case "joke":
-            return;
+        case "j":
+            let jKeys = Object.keys(jokes)
+            let jRandIndex = Math.floor(Math.random() * jKeys.length)
+            let jRandKey = jKeys[jRandIndex]
+            let joke = jokes[jRandKey]
+            writeLine(terminal,joke["setup"], true);
+            return joke["punchline"];
         case "dogfact":
         case "df":
             //not sure if it would be better practice to access the backend API for this
-            let dfKeys = Object.keys(dogFacts)
-            let dfRandIndex = Math.floor(Math.random() * dfKeys.length)
-            let dfRandKey = dfKeys[dfRandIndex]
-            let dfFact = dogFacts[dfRandKey]["fact"]
-            writeLine(terminal,dfFact,true);
-            return;
+            let dKeys = Object.keys(dogFacts)
+            let dRandIndex = Math.floor(Math.random() * dKeys.length)
+            let dRandKey = dKeys[dRandIndex]
+            let dFact = dogFacts[dRandKey]["fact"]
+            return dFact
         case "fact":
         case "f":
             let keys = Object.keys(facts["facts"])
             let randIndex = Math.floor(Math.random() * keys.length)
             let randKey = keys[randIndex]
             let fact = facts["facts"][randKey]
-            writeLine(terminal,fact,true);
-            return;
+            return fact;
         case "history":
             history.forEach((entry, index)=> {
                 writeLine(terminal,index + " " + entry, true);
@@ -111,14 +108,11 @@ function evaluateCommand(terminal,history,command) {
         case "cl":
             terminal.clear()
             return;
+        case "cd":
+            window.location.href = command.split(" ")[1]
+            return;
+
         default:
-            if (new RegExp('^cd *').test(command))
-            {
-                //not sure this is the best way to do this(having redirects outside of react router) but unsure of the optimal way
-                window.location.href = command.split(" ")[1]
-                return;
-            }
-            
             if (new RegExp('!\\d+').test(command))
             {
                 let historyIndex = command.slice(1,)

@@ -1,8 +1,8 @@
 [
-    {"command":"joke", "description": "Tell a joke", "aliases" : []},
-    {"command":"dogfact", "description": "Tell a dog fact from dog api", "aliases" : ["df"]},
-    {"command":"fact", "description": "Tell a fact from fact api", "aliases" : ["f"]},
-    {"command":"history", "description": "provide history of entered commands, activate these with !{index} where {index} is command index", "aliases" : []},
+    {"command":"joke", "description": "Return a joke, optional params - ", "aliases" : ["j"]},
+    {"command":"dogfact", "description": "Return a dog fact from dog api", "aliases" : ["df"]},
+    {"command":"fact", "description": "Return a fact from fact api", "aliases" : ["f"]},
+    {"command":"history", "description": "Return command history, re-run these with !{index} where {index} is command index", "aliases" : []},
     {"command":"clear", "description": "clear the terminal", "aliases" : ["cls","cl"]},
     {"command":"cd", "description": "redirect to magnus.one/{link}", "aliases" : []},
     {"command":"", "description": "\bSupports basic maths by entering equations", "aliases" : []}
