@@ -31,8 +31,6 @@
 .navbar ul {
   list-style: none;
   text-align: right;
-  transition: transform 0.5s ease-out;
-  -webkit-transition: transform 0.5s ease-out;
 }
 
 .navbar .menu,
@@ -44,14 +42,12 @@
 .navbar li a {
   color: #0d1a26;
   display: block;
-  font-size: 0.7em;
+  font-size: 0.8em;
   height: 60px;
   letter-spacing: 1px;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
   margin: 0 30px;
   padding: 0 4px;
 }
@@ -120,7 +116,21 @@
 }
 
 .mobileMenu {
-  padding-top: 80px;
+  padding-top: 90px;
+  list-style-type:none;
 }
 
+.mobileMenu li a{
+  font-size: 0.8em;
+  height: 60px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #0d1a26;
+  text-decoration: none;
+  display:block;
+  margin: 0 30px;
+  padding: 0 4px;
+  text-align: center;
+}
 /* Remove the underlines on click on mobile i think, looks kinda weird. */
+/*modify mobile width params since addition of burger menu  */
