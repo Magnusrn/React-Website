@@ -31,7 +31,7 @@ const NavigationBar = () => {
               <a href="terminal">Terminal</a>
             </li>
             <li>
-              <a href="github"><i className="fa-brands fa-github"></i></a>
+              <a href="https://github.com/magnusrn"><i className="fa-brands fa-github"></i></a>
             </li>
           </ul>
           
