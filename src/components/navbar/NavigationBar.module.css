@@ -85,7 +85,7 @@
   transform-origin: bottom left;
 }
 
-@media (max-width: 1068px) {
+@media (max-width: 1080px) {
   .navWrapper {
     width: 95%;
   }

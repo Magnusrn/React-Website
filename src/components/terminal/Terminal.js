@@ -9,13 +9,17 @@ import {evaluate as evaluateMath} from 'mathjs';
 
 const RenderTerminal = () => {
     const xtermRef = React.useRef(null)
+    console.log(window.innerWidth)
     React.useEffect(() => {
         renderTerminal(xtermRef);
       }, []);
+      //rudimentary method of resizing for specific window sizes.
+      let cols = parseInt(window.innerWidth/12)
+      let rows = parseInt(window.innerHeight/35)
     return (
         <div className={styles.terminal}>
             {/* cols is character count per line */}
-            <XTerm ref={xtermRef} options={{rows:15,cols:100}}/>
+            <XTerm ref={xtermRef} options={{rows:rows,cols:cols}}/>
         </div>
     )
 }
@@ -71,6 +75,7 @@ function evaluateCommand(terminal,history,command) {
             })
                 
             return msg
+            //not sure if it would be better practice to create an API and fetch from it, may save significant memory
         case "joke":
         case "j":
             let jKeys = Object.keys(jokes)
@@ -81,7 +86,6 @@ function evaluateCommand(terminal,history,command) {
             return joke["punchline"];
         case "dogfact":
         case "df":
-            //not sure if it would be better practice to access the backend API for this
             let dKeys = Object.keys(dogFacts)
             let dRandIndex = Math.floor(Math.random() * dKeys.length)
             let dRandKey = dKeys[dRandIndex]
