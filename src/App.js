@@ -1,6 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import NoPage from "./pages/NoPage";
 import NavigationBar from "./components/navbar/NavigationBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,7 @@ export default function App() {
                 <Route path="/" element={<Home/>}/>
                 {/*allow aliases to access the timer page for speed*/}
                 <Route path="terminal" element={<Terminal/>}/>
+                <Route path="about" element={<About/>}/>
                 <Route path="*" element={<NoPage/>}/>
             </Routes>
             </div>
