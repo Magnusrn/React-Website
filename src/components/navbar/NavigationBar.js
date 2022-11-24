@@ -27,6 +27,9 @@ const NavigationBar = () => {
             <li>
               <a href="https://github.com/magnusrn"><i className="fa-brands fa-github"></i></a>
             </li>
+            <li>
+              <a href="mailto:magnus@magnus.one"><i className="fa-solid fa-envelope"></i></a>
+            </li>
           </ul>
           
           <div className={styles.hamburgerMenu} onClick={toggleBurgerMenu}>
