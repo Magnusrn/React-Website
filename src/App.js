@@ -29,5 +29,4 @@ export default function App() {
 }
 //todo
 //add ci to github
-//may need to load the audio on page load instead of when it needs to be played as browsers restrict resources for inactive tabs
 //ensure all pages fit on mobile
