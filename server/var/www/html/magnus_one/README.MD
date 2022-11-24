@@ -1,0 +1,1 @@
+.htaccess must be added to build folder before deploying to /var/www/html/magnus_one/build to allow for non root urls to load correctly
